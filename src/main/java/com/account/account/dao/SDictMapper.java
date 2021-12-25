@@ -10,13 +10,13 @@ import java.util.List;
 @Mapper
 @Repository
 public interface SDictMapper {
-    public List<SDict> getSDictList();
+    List<SDict> getSDictList();
 
     int addSDict(SDict sDict);
 
-    int updSDict(@Param("sDict") SDict sDict);
+    int updSDict(SDict sDict);
 
     int delSDict(String id);
 
-    int delSDictBatch(String ids);
+    int delSDictBatch(String[] ids);
 }

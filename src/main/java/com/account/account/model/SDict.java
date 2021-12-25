@@ -34,5 +34,5 @@ public class SDict {
      * 排序字段
      */
     @ApiModelProperty("排序")
-    private int order;
+    private int orderNumber;
 }

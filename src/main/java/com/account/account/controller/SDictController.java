@@ -5,6 +5,7 @@ import com.account.account.common.Result;
 import com.account.account.model.SDict;
 import com.account.account.services.SDictServices;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +33,7 @@ public class SDictController {
      * @Description 查询所有数据字典列表
      */
     @PostMapping("/sDictList")
+    @ApiOperation(value = "查询数据字典列表", tags = "查询数据字典列表")
     public Result SDictList(){
         List<SDict> dictList = sDictServices.getSDictList();
         return new Result(Consts.SUCCESS, Consts.SUCCESS, dictList);
@@ -43,6 +45,7 @@ public class SDictController {
      * @Description 添加一个数据字典
      */
     @PostMapping("/addSDict")
+    @ApiOperation(value = "添加数据字典", tags = "添加数据字典")
     public Result addSDict(SDict sDict){
         int addAccount = sDictServices.addSDict(sDict);
         return new Result(Consts.SUCCESS, Consts.SUCCESS, addAccount);
@@ -54,6 +57,7 @@ public class SDictController {
      * @Description 更新数据字典信息
      */
     @PostMapping("/updSDict")
+    @ApiOperation(value = "更新数据字典", tags = "更新数据字典")
     public Result updSDict(SDict sDict){
         int updSDict = sDictServices.updSDict(sDict);
         return new Result(Consts.SUCCESS, Consts.SUCCESS, updSDict);
@@ -65,6 +69,7 @@ public class SDictController {
      * @Description 删除单条数据字典
      */
     @PostMapping("/delSDict")
+    @ApiOperation(value = "", tags = "删除数据字典")
     public Result delSDict(String id){
         int delSDict = sDictServices.delSDict(id);
         return new Result(Consts.SUCCESS, Consts.SUCCESS, delSDict);
@@ -76,7 +81,8 @@ public class SDictController {
      * @Description 批量删除数据字典
      */
     @PostMapping("/delSDictBatch")
-    public Result delSDictBatch(String ids){
+    @ApiOperation(value = "", tags = "批量删除数据字典")
+    public Result delSDictBatch(String[] ids){
         int delSDictBatch = sDictServices.delSDictBatch(ids);
         return new Result(Consts.SUCCESS, Consts.SUCCESS, delSDictBatch);
     }

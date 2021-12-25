@@ -5,41 +5,41 @@
     <resultMap id="BaseColumns" type="com.account.account.model.SDict">
         <id property="code" column="code"></id>
         <result property="name" column="name"></result>
-        <result property="order" column="order"></result>
+        <result property="orderNumber" column="order_number"></result>
     </resultMap>
 
     <select id="getSDictList" resultType="com.account.account.model.SDict">
-        SELECT code, name, order
+        SELECT *
         FROM s_dict
     </select>
 
-    <insert id="addSDict">
+    <insert id="addSDict" parameterType="com.account.account.model.SDict">
         INSERT INTO s_dict(
             code,
             <if test="name != null and name != ''">name,</if>
-            <if test="order != null and order != ''">order,</if>
+            <if test="orderNumber != null and orderNumber != ''">order_number</if>
         ) VALUES (
-            code,
-            <if test="name != null and name != ''">name,</if>
-            <if test="order != null and order != ''">order,</if>
+            #{code},
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="orderNumber != null and orderNumber != ''">#{orderNumber}</if>
         )
     </insert>
 
-    <update id="updSDict">
+    <update id="updSDict" parameterType="com.account.account.model.SDict">
         UPDATE s_dict
         <set>
             <if test="name != null and name != ''">name = #{name},</if>
-            <if test="order != null and order != ''">order = #{order},</if>
+            <if test="orderNumber != null and orderNumber != ''">order_number = #{orderNumber}</if>
         </set>
         WHERE code = #{code}
     </update>
 
-    <delete id="delSDict">
+    <delete id="delSDict" parameterType="java.lang.String">
         DELETE FROM s_dict
         WHERE code = #{code}
     </delete>
 
-    <delete id="delSDictBatch">
+    <delete id="delSDictBatch" parameterType="arraylist">
         DELETE FROM  s_dict
         WHERE code IN
         <foreach collection="ids" item="id" open="(" separator="," close=")">

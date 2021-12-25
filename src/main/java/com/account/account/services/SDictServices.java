@@ -13,5 +13,5 @@ public interface SDictServices {
 
     int delSDict(String id);
 
-    int delSDictBatch(String ids);
+    int delSDictBatch(String[] ids);
 }

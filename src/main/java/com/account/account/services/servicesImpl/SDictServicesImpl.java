@@ -35,7 +35,7 @@ public class SDictServicesImpl implements SDictServices {
     }
 
     @Override
-    public int delSDictBatch(String ids) {
+    public int delSDictBatch(String[] ids) {
         return sDictMapper.delSDictBatch(ids);
     }
 }
