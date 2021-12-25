@@ -12,6 +12,11 @@
         SELECT *
         FROM s_dict
     </select>
+    <select id="getDictByCode" resultType="com.account.account.model.SDict" parameterType="java.lang.String">
+        SELECT *
+        FROM s_dict
+        WHERE code = #{code}
+    </select>
 
     <insert id="addSDict" parameterType="com.account.account.model.SDict">
         INSERT INTO s_dict(

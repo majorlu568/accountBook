@@ -32,11 +32,24 @@ public class SDictController {
      * @return 所有数据字典列表
      * @Description 查询所有数据字典列表
      */
-    @PostMapping("/sDictList")
+    @PostMapping("/getDictList")
     @ApiOperation(value = "查询数据字典列表", tags = "查询数据字典列表")
-    public Result SDictList(){
+    public Result getDictList(){
         List<SDict> dictList = sDictServices.getSDictList();
         return new Result(Consts.SUCCESS, Consts.SUCCESS, dictList);
+    }
+
+    /**
+     *
+     * @param code 字典编码
+     * @return 一条数据字典
+     * @Description 根据编码获取数据字典信息
+     */
+    @PostMapping("/getDictByCode")
+    @ApiOperation(value = "根据code获取数据字典", tags = "根据code获取数据字典")
+    public Result getDictByCode(String code){
+        SDict sDict = sDictServices.getDictByCode(code);
+        return new Result(Consts.SUCCESS, Consts.SUCCESS, sDict);
     }
 
     /**

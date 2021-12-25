@@ -14,4 +14,6 @@ public interface SDictServices {
     int delSDict(String id);
 
     int delSDictBatch(String[] ids);
+
+    SDict getDictByCode(String code);
 }

@@ -38,4 +38,9 @@ public class SDictServicesImpl implements SDictServices {
     public int delSDictBatch(String[] ids) {
         return sDictMapper.delSDictBatch(ids);
     }
+
+    @Override
+    public SDict getDictByCode(String code) {
+        return sDictMapper.getDictByCode(code);
+    }
 }
