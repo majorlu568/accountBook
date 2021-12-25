@@ -2,10 +2,49 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.account.account.dao.SDictMapper">
 
+    <resultMap id="BaseColumns" type="com.account.account.model.SDict">
+        <id property="code" column="code"></id>
+        <result property="name" column="name"></result>
+        <result property="order" column="order"></result>
+    </resultMap>
+
     <select id="getSDictList" resultType="com.account.account.model.SDict">
-        SELECT *
+        SELECT code, name, order
         FROM s_dict
     </select>
 
+    <insert id="addSDict">
+        INSERT INTO s_dict(
+            code,
+            <if test="name != null and name != ''">name,</if>
+            <if test="order != null and order != ''">order,</if>
+        ) VALUES (
+            code,
+            <if test="name != null and name != ''">name,</if>
+            <if test="order != null and order != ''">order,</if>
+        )
+    </insert>
+
+    <update id="updSDict">
+        UPDATE s_dict
+        <set>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="order != null and order != ''">order = #{order},</if>
+        </set>
+        WHERE code = #{code}
+    </update>
+
+    <delete id="delSDict">
+        DELETE FROM s_dict
+        WHERE code = #{code}
+    </delete>
+
+    <delete id="delSDictBatch">
+        DELETE FROM  s_dict
+        WHERE code IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
 
 </mapper>

@@ -2,6 +2,7 @@ package com.account.account.dao;
 
 import com.account.account.model.SDict;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface SDictMapper {
 
     int addSDict(SDict sDict);
 
-    int updSDict(SDict sDict);
+    int updSDict(@Param("sDict") SDict sDict);
 
     int delSDict(String id);
 

@@ -17,10 +17,10 @@ import java.util.List;
  * @Description 数据字典相关操作
  * @author major
  */
-@Api(tags = "数据字典接口")
 @Slf4j
 @RestController
 @RequestMapping(value = "//sDict")
+@Api(value = "字典接口", tags = "数据字典相关的接口")
 public class SDictController {
 
     @Autowired
