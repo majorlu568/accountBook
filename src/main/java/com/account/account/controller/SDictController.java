@@ -8,6 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,11 +31,11 @@ public class SDictController {
      * @return 所有数据字典列表
      * @Description 查询所有数据字典列表
      */
-    @GetMapping("/getDictList")
-    @ApiOperation(value = "查询数据字典列表", tags = "查询数据字典列表")
-    public Result getDictList(){
+    @GetMapping(value = "/getDictList")
+    @ApiOperation(value = "查询数据字典列表")
+    public List<SDict> getDictList(){
         List<SDict> dictList = sDictServices.getSDictList();
-        return new Result(Consts.SUCCESS, Consts.SUCCESS, dictList);
+        return dictList;
     }
 
     /**
@@ -44,10 +45,10 @@ public class SDictController {
      * @Description 根据编码获取数据字典信息
      */
     @PostMapping("/getDictByCode")
-    @ApiOperation(value = "根据code获取数据字典", tags = "根据code获取数据字典")
-    public Result getDictByCode(String code){
+    @ApiOperation(value = "根据code获取数据字典")
+    public SDict getDictByCode(String code){
         SDict sDict = sDictServices.getDictByCode(code);
-        return new Result(Consts.SUCCESS, Consts.SUCCESS, sDict);
+        return sDict;
     }
 
     /**
@@ -56,10 +57,10 @@ public class SDictController {
      * @Description 添加一个数据字典
      */
     @PostMapping("/addSDict")
-    @ApiOperation(value = "添加数据字典", tags = "添加数据字典")
-    public Result addSDict(SDict sDict){
+    @ApiOperation(value = "添加数据字典")
+    public int addSDict(SDict sDict){
         int addAccount = sDictServices.addSDict(sDict);
-        return new Result(Consts.SUCCESS, Consts.SUCCESS, addAccount);
+        return addAccount;
     }
 
     /**
@@ -68,10 +69,10 @@ public class SDictController {
      * @Description 更新数据字典信息
      */
     @PutMapping("/updSDict")
-    @ApiOperation(value = "更新数据字典", tags = "更新数据字典")
-    public Result updSDict(SDict sDict){
+    @ApiOperation(value = "更新数据字典")
+    public int updSDict(SDict sDict){
         int updSDict = sDictServices.updSDict(sDict);
-        return new Result(Consts.SUCCESS, Consts.SUCCESS, updSDict);
+        return updSDict;
     }
 
     /**
@@ -80,10 +81,10 @@ public class SDictController {
      * @Description 删除单条数据字典
      */
     @DeleteMapping("/delSDict")
-    @ApiOperation(value = "", tags = "删除数据字典")
-    public Result delSDict(String id){
+    @ApiOperation(value = "删除数据字典")
+    public int delSDict(String id){
         int delSDict = sDictServices.delSDict(id);
-        return new Result(Consts.SUCCESS, Consts.SUCCESS, delSDict);
+        return delSDict;
     }
 
     /**
@@ -92,9 +93,9 @@ public class SDictController {
      * @Description 批量删除数据字典
      */
     @DeleteMapping("/delSDictBatch")
-    @ApiOperation(value = "", tags = "批量删除数据字典")
-    public Result delSDictBatch(String[] ids){
+    @ApiOperation(value = "批量删除数据字典")
+    public int delSDictBatch(String[] ids){
         int delSDictBatch = sDictServices.delSDictBatch(ids);
-        return new Result(Consts.SUCCESS, Consts.SUCCESS, delSDictBatch);
+        return delSDictBatch;
     }
 }
