@@ -8,9 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,7 +30,7 @@ public class SDictController {
      * @return 所有数据字典列表
      * @Description 查询所有数据字典列表
      */
-    @PostMapping("/getDictList")
+    @GetMapping("/getDictList")
     @ApiOperation(value = "查询数据字典列表", tags = "查询数据字典列表")
     public Result getDictList(){
         List<SDict> dictList = sDictServices.getSDictList();
@@ -69,7 +67,7 @@ public class SDictController {
      * @return 更新的结果
      * @Description 更新数据字典信息
      */
-    @PostMapping("/updSDict")
+    @PutMapping("/updSDict")
     @ApiOperation(value = "更新数据字典", tags = "更新数据字典")
     public Result updSDict(SDict sDict){
         int updSDict = sDictServices.updSDict(sDict);
@@ -81,7 +79,7 @@ public class SDictController {
      * @return 删除的结果
      * @Description 删除单条数据字典
      */
-    @PostMapping("/delSDict")
+    @DeleteMapping("/delSDict")
     @ApiOperation(value = "", tags = "删除数据字典")
     public Result delSDict(String id){
         int delSDict = sDictServices.delSDict(id);
@@ -93,7 +91,7 @@ public class SDictController {
      * @return 批量删除的结果
      * @Description 批量删除数据字典
      */
-    @PostMapping("/delSDictBatch")
+    @DeleteMapping("/delSDictBatch")
     @ApiOperation(value = "", tags = "批量删除数据字典")
     public Result delSDictBatch(String[] ids){
         int delSDictBatch = sDictServices.delSDictBatch(ids);
